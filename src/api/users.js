@@ -708,3 +708,7 @@ export const getUsers = function (page, limit) {
   }
   return array;
 };
+
+export const getLength = function () {
+  return users.length;
+};

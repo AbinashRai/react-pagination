@@ -3,12 +3,21 @@ import "./App.css";
 import { getUsers, getLength } from "./api/users";
 import Table from "./components/table";
 import Pagination from "./components/pagination";
+import SelectLimit from "./components/selectLimit";
 
 function App() {
-  const [page, setPage] = useState(5);
+  const [page, setPage] = useState(2);
   const [limit, setLimit] = useState(5);
 
   let totalPage = Math.ceil(getLength() / limit);
+  let pageNo;
+  if (page <= totalPage) {
+    pageNo = page;
+  } else {
+    setPage(totalPage);
+    pageNo = page;
+  }
+
   function handlePageChange(value) {
     if (value === "&laquo;" || value === "... ") {
       setPage(1);
@@ -30,9 +39,12 @@ function App() {
   return (
     <div className="container">
       <Table users={getUsers(page, limit)} />
+      <div className="pagination-container">
+        <SelectLimit onLimitChange={setLimit} />
+      </div>
       <Pagination
         totalPage={totalPage}
-        page={page}
+        page={pageNo}
         limit={limit}
         siblings={1}
         onPageChange={handlePageChange}

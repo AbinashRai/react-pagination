@@ -6,7 +6,7 @@ import Pagination from "./components/pagination";
 import SelectLimit from "./components/selectLimit";
 
 function App() {
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(5);
 
   let totalPage = Math.ceil(getLength() / limit);

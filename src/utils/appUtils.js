@@ -25,11 +25,3 @@ export const returnPaginationRange = (totalPage, page, limit, siblings) => {
     return [1, "... ", ...middleRange, " ...", totalPage];
   }
 };
-
-// const bikal = {
-//   hi: "1",
-//   hello: "2",
-//   bye: "3",
-// };
-
-// console.log(Object.entries(bikal).find(([key, value])=> value === "1")[0]);

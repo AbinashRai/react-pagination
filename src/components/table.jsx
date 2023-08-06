@@ -1,6 +1,6 @@
 import React from "react";
 
-const Table = (props) => {
+const Table = ({ users }) => {
   return (
     <div>
       <table className="table text-center">
@@ -14,7 +14,7 @@ const Table = (props) => {
           </tr>
         </thead>
         <tbody>
-          {props.users.map((users) => (
+          {users.map((users) => (
             <tr key={users.id}>
               <td>{users.id}</td>
               <td>{users.fullName}</td>

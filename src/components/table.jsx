@@ -1,12 +1,12 @@
 import axios from "axios";
-import React from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 const Table = ({ users }) => {
+  const [data, setData] = useState([]);
   useEffect(() => {
     axios
       .get("http://localhost:8080/api/data")
-      .then((res) => console.log(res))
+      .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, []);
   return (
@@ -22,15 +22,17 @@ const Table = ({ users }) => {
           </tr>
         </thead>
         <tbody>
-          {users.map((users) => (
-            <tr key={users.id}>
-              <td>{users.id}</td>
-              <td>{users.fullName}</td>
-              <td>{users.fullMobileNumber}</td>
-              <td>{users.email}</td>
-              <td>{users.signupDate}</td>
-            </tr>
-          ))}
+          {data.map((user, index) => {
+            return (
+              <tr key={index}>
+                <td>{user.id}</td>
+                <td>{user.fullName}</td>
+                <td>{user.fullMobileNumber}</td>
+                <td>{user.email}</td>
+                <td>{user.signupDate}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

@@ -701,6 +701,8 @@ const users = [
   },
 ];
 
+module.exports = users;
+
 //   export const getUsers = function (page, limit) {
 //     let array = [];
 //     for (let i = (page - 1) * limit; i < page * limit && users[i]; i++) {

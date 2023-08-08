@@ -1,6 +1,14 @@
+import axios from "axios";
 import React from "react";
+import { useEffect } from "react";
 
 const Table = ({ users }) => {
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/data")
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <div>
       <table className="table text-center">
